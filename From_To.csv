@@ -1,0 +1,76 @@
+From,To
+3-D Man,Abe Sapien
+3-D Man,Ajax
+3-D Man,Alien
+3-D Man,Amazo
+3-D Man,Angel
+3-D Man,Angel Dust
+3-D Man,Annihilus
+3-D Man,Ant-Man II
+Abe Sapien,3-D Man
+Abe Sapien,Ajax
+Abe Sapien,Amazo
+Abe Sapien,Angel
+Abe Sapien,Angel Dust
+Abe Sapien,Annihilus
+Abe Sapien,Ant-Man II
+Ajax,Alex Mercer
+Ajax,Alien
+Ajax,Amazo
+Ajax,Angel
+Ajax,Angel Dust
+Ajax,Annihilus
+Ajax,Ant-Man II
+Alex Mercer,Abe Sapien
+Alex Mercer,Ajax
+Alex Mercer,3-D Man
+Alex Mercer,Amazo
+Alex Mercer,Angel
+Alex Mercer,Angel Dust
+Alex Mercer,Annihilus
+Alex Mercer,Ant-Man II
+Alien,Abe Sapien
+Alien,Ajax
+Alien,Amazo
+Alien,Angel
+Alien,Angel Dust
+Alien,Annihilus
+Alien,Ant-Man II
+Amazo,Abe Sapien
+Amazo,Ajax
+Amazo,Alex Mercer
+Amazo,Alien
+Amazo,3-D Man
+Amazo,Angel
+Amazo,Angel Dust
+Angel,Abe Sapien
+Angel,Ajax
+Angel,Alex Mercer
+Angel,Alien
+Angel,Amazo
+Angel,3-D Man
+Angel,Angel Dust
+Angel,Ant-Man II
+Angel Dust,Abe Sapien
+Angel Dust,Ajax
+Angel Dust,Alex Mercer
+Angel Dust,Alien
+Angel Dust,Amazo
+Angel Dust,3-D Man
+Angel Dust,Annihilus
+Annihilus,Abe Sapien
+Annihilus,Ajax
+Annihilus,Alex Mercer
+Annihilus,Alien
+Annihilus,Amazo
+Annihilus,Angel
+Annihilus,Angel Dust
+Annihilus,3-D Man
+Annihilus,Ant-Man II
+Ant-Man II,Abe Sapien
+Ant-Man II,Ajax
+Ant-Man II,Alex Mercer
+Ant-Man II,Amazo
+Ant-Man II,Angel Dust
+Ant-Man II,Annihilus
+Ant-Man II,3-D Man

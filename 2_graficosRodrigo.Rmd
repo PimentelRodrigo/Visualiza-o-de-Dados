@@ -1,0 +1,272 @@
+---
+title: "Tipos de Gr?ficos"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+# ggplot2
+
+A maneira mais f?cil de obter o ggplot2 ? instalar o pacote tidyverse
+O tidyverse ? uma cole??o de pacotes R projetados para ci?ncia de dados
+
+```{r}
+install.packages("tidyverse")
+```
+
+Como alternativa, instale apenas o ggplot2:
+
+```{r}
+install.packages("ggplot2")
+```
+
+
+```{r}
+# Carrega o ggplot2
+library(ggplot2)
+```
+
+Importar Dataset
+
+```{r}
+heros <- read.csv("D:/Pós-Graduação/Disciplina 7/Atividades Envidadas/Gráfico em R/SuperheroDataset.csv", sep = ",", header=TRUE)
+
+head(heros, 5)
+```
+
+### Gr?fico de Barras
+
+![](img/barchart.png)
+
+
+
+```{r}
+
+ggplot() +
+  geom_bar(aes(x = heros$Alignment), color = "#8da0cb", fill = "#8da0cb") +
+  theme_classic()
+```
+
+
+### Gr?fico de Barras Horizontal
+
+![](img/horizontal_barchart.png)
+
+
+
+```{r}
+
+ggplot() +
+  geom_bar(aes(x = heros$Alignment), color = "#8da0cb", fill = "#8da0cb") +
+  coord_flip()
+
+```
+
+
+### Histograma
+
+![](img/histograma.png)
+
+
+```{r}
+
+ggplot() + 
+  geom_histogram(aes(x = heros$Intelligence, color = "black"))
+
+```
+
+
+### Gr?fico de Dispers?o
+
+![](img/scatterplot.png)
+
+
+```{r}
+
+ggplot(heros, aes(x = Intelligence, y = Speed, size = Total.Power, color = Total.Power)) + 
+  geom_point()
+
+```
+
+
+### Mapa de Calor (Heatmap)
+
+![](img/heatmap.png)
+
+```{r}
+
+ggplot(heros, aes(x = Intelligence, y = Speed, fill = Gender)) + 
+  geom_raster()
+
+```
+
+
+
+### Gr?fico de Linhas
+
+![](img/line_chart.png)
+
+
+
+```{r}
+
+olimpiadas <- read.csv("D:/Pós-Graduação/Disciplina 7/Atividades Envidadas/Gráfico em R/olimpiadas_brasil.csv", sep = ",", header=TRUE)
+
+ggplot(olimpiadas, aes(x = ano , y = total, color = "green4" )) + 
+  geom_line()
+
+```
+
+
+
+### Gr?fico de ?rea
+
+
+![](img/area_chart.png)
+
+
+```{r}
+
+ggplot(heros, aes(x=Combat)) +
+    geom_density(fill="#0000FF", color="#0000FF", alpha=0.8)
+
+```
+
+
+### Gr?fico de ?rea Empilhada
+
+![](img/stacked_area.png)
+
+
+
+```{r}
+library(tidyverse)
+heros1 <- as.tibble(heros)
+df = heros1 %>%filter(heros1$Total.Power > 0)
+
+ggplot(data=heros1, aes(x=Intelligence, group=Gender, fill=Gender)) +
+    geom_density(adjust=1.5, alpha=.4)
+
+```
+
+
+### Gr?fico de Barras Empilhadas
+
+
+![](img/stacked_bar_chart.png)
+
+
+
+
+
+
+```{r}
+ggplot(heros1, aes(x = Alignment, fill = Gender)) +
+  theme_bw() + 
+  geom_bar() + 
+  labs(y = "Heros count",
+       title = "Alignment by Gender")
+  
+```
+
+
+### Gr?fico de Barras Agrupadas
+
+![](img/grouped_bar.png)
+
+
+
+```{r}
+
+ggplot(heros1, aes(fill=Gender, x=Alignment)) + 
+    geom_bar() +
+  labs(y = "Heros count")
+
+
+```
+
+
+### Gr?fico de Setores (Pizza)
+
+
+![](img/pie_chart.png)
+
+
+```{r}
+
+ggplot(heros1, aes(x="", y = Total.Power , fill=Alignment)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0) +
+   theme_void() # remove background, grid, numeric labels
+
+```
+
+
+
+### Gr?fico de Setores (Rosca)
+
+![](img/donut.png)
+
+
+
+```{r}
+
+
+
+```
+
+
+### Treemap
+
+![](img/treemap.png)
+
+
+```{r}
+
+install.packages("breakDown")
+install.packages("treemapify")
+
+library(breakDown)
+library(treemapify)
+
+head(heros)
+
+library(dplyr)
+
+tree_data <- heros1 %>%
+  count(Creator)
+head(tree_data)
+
+ggplot(tree_data, aes(fill = Creator, area = n )) +
+  geom_treemap()
+
+```
+
+
+
+
+# Refer?ncias
+
+[Gr?ficos com ggplot2](https://www.curso-r.com/material/ggplot/)
+
+[The R Graph Gallery](https://www.r-graph-gallery.com/index.html)
+
+
+[Hadley Wickham - ggplot: Elegant graphics for data analysis.](http://moderngraphics11.pbworks.com/f/ggplot2-Book09hWickham.pdf)
+
+[Data Visualization Using R & ggplot - Karthik Ram.](https://combine-australia.github.io/r-novice-gapminder/ggplot.pdf)
+
+[A ggplot2 Primer.](https://www.data-action-lab.com/wp-content/uploads/2018/11/DSRS_GGP2.pdf)
+
+[ggplot2: Introduction and exercises - Umer Zeeshan Ijaz.](http://userweb.eng.gla.ac.uk/umer.ijaz/bioinformatics/ecological/ggplot2.pdf)
+
+[Getting started with ggplot2 - Gaston Sanchez.](https://github.com/ucb-stat133/stat133-fall-2016/blob/master/notes/09-ggplot2/09-ggplot2.pdf)
+
+[Charts with ggplot2 -Andrew Ba Tran.](https://journalismcourses.org/courses/RC0818/charts_with_ggplot.pdf)
+
+[STAT 408.](http://www.math.montana.edu/ahoegh/teaching/stat408/lecturematerials/)
+
+[ggplot2: elegant graphics for data analysis ](https://github.com/hadley/ggplot2-book)
+
+
+
